@@ -15,3 +15,4 @@
 Route::get('contact', 'PagesCtrl@getContact'); 
 Route::get('about', 'PagesCtrl@getAbout');
 Route::get('/', 'PagesCtrl@getIndex');
+Route::resource('posts', 'PostCtrl');
