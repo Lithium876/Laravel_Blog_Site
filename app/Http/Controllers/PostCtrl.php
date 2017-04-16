@@ -120,8 +120,12 @@ class PostCtrl extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+   public function destroy($id)
     {
-        //
-    }
-}
+        $post = Post::find($id);
+
+        $post->delete();
+
+        Session::flash('Success', 'The post was successfully deleted.');
+        return redirect()->route('posts.index');
+    }}
