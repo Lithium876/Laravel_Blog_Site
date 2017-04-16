@@ -15,7 +15,7 @@ class PostCtrl extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('posts.index')->withPosts($posts);
     }
 
@@ -98,7 +98,7 @@ class PostCtrl extends Controller
                 'title' => 'required|max:255',
                 'body'  => 'required'
             ));
-        
+
         // Save the data to the database
         $post = Post::find($id);
 
