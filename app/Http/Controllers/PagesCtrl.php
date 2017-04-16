@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Post;
 /**
 * Pages controller class
 */
 class PagesCtrl extends Controller
 {
 	
-	public function getIndex()
-	{
-		return view('pages.welcome');
+	public function getIndex() {
+		$posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
+		return view('pages.welcome')->withPosts($posts);
 	}
 
 	public function getAbout()
